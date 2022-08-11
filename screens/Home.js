@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-  SafeAreaView,
   View,
-  Text,
   StyleSheet
 } from 'react-native';
-import NavBar from '../components/NavBar';
 import TransactionsList from "../components/TransactionsList";
 
 const Home = () => {
@@ -45,7 +42,6 @@ const Home = () => {
 
   return (
     <View style={styles.safeContainer}>
-      <NavBar/>
       <View style={styles.mainContainer}>
         <View>
           <TransactionsList transactions={transactions}/>
@@ -57,7 +53,9 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   safeContainer: {
-    flexGrow: 1
+    flexGrow: 1,
+    paddingTop: 30,
+    backgroundColor: 'beige'
   },
   mainContainer: {
     backgroundColor: 'beige',
