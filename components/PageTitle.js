@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from "react-native";
-import view from "react-native-web/dist/exports/View";
 
 const PageTitle = (props) => {
   const text = props.text
@@ -19,7 +18,8 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontWeight: "bold",
     fontSize: 24,
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
+    color: 'beige'
   }
 })
 

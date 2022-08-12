@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flexGrow: 1,
     paddingTop: 30,
-    backgroundColor: 'beige'
+    backgroundColor: 'green'
   }
 });
 

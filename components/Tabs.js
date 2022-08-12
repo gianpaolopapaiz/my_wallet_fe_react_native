@@ -1,6 +1,8 @@
 import React from 'react';
 import Home from '../screens/Home';
+import Statistics from "../screens/Statistics";
 import Categories from '../screens/Categories';
+import Settings from '../screens/Settings';
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -8,6 +10,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const Tab = createMaterialBottomTabNavigator();
+const iconColor = 'beige'
 
 const Tabs = () => {
   return (
@@ -23,17 +26,17 @@ const Tabs = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="home" color="white" size={26} />
+            <MaterialCommunityIcons name="home" color={iconColor} size={26} />
           ),
         }}
       />
       <Tab.Screen
         name="Statistics"
-        component={Home}
+        component={Statistics}
         options={{
           tabBarLabel: 'Statistics',
           tabBarIcon: () => (
-            <FontAwesome name="pie-chart" color="white" size={25} />
+            <FontAwesome name="pie-chart" color={iconColor} size={25} />
           ),
         }}
       />
@@ -43,17 +46,17 @@ const Tabs = () => {
         options={{
           tabBarLabel: 'Categories',
           tabBarIcon: () => (
-            <Entypo name="folder" color="white" size={25} />
+            <Entypo name="folder" color={iconColor} size={25} />
           ),
         }}
       />
       <Tab.Screen
         name="Settings"
-        component={Home}
+        component={Settings}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: () => (
-            <Ionicons name="settings-sharp" color="white" size={25} />
+            <Ionicons name="settings-sharp" color={iconColor} size={25} />
           ),
         }}
       />
