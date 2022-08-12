@@ -1,67 +1,48 @@
 import React from 'react';
 import {
+  Text,
   View,
   StyleSheet
 } from 'react-native';
 import ScreenContentWrapper from "../components/ScreenContentWrapper";
 import PageTitle from "../components/PageTitle";
-import TransactionsList from "../components/TransactionsList";
+import AccountsList from "../components/AccountsList";
+// import AccountsList from "../components/AccountsList";
 
 const Home = () => {
-  const transactions = [
+  const accounts = [
     {
-      title: '01/01/2022',
-      data: [
-        {
-          id: 1,
-          title: 'Fuel for car',
-          value: -50,
-          formattedValue: '-$50.00',
-          category: 'Vehicles'
-        },
-        {
-          id: 2,
-          title: 'Monthly Salary',
-          value: 2000,
-          formattedValue: '$2.000.00',
-          category: 'Income'
-        }
-      ]
+      id: 1,
+      name: 'Account 1',
+      description: 'Account 1 description',
+      initial_amount: 100,
+      nice_initial_amount: '$100,00',
+      current_value: 500,
+      nice_current_amount: '$500,00'
     },
     {
-      title: '02/01/2022',
-      data: [
-        {
-          id: 3,
-          title: 'Medicine',
-          value: -30,
-          formattedValue: '-$30.00',
-          category: 'Vehicles'
-        }
-      ]
+      id: 2,
+      name: 'Account 2',
+      description: 'Account 2 description',
+      initial_amount: 50,
+      nice_initial_amount: '$50,00',
+      current_amount: 400,
+      nice_current_amount: '$400,00'
     }
   ]
 
   return (
-    <ScreenContentWrapper>
-      <PageTitle text="Accounts"/>
+    <ScreenContentWrapper pageTitle='Accounts'>
       <View style={styles.mainContainer}>
-        <View>
-          <TransactionsList transactions={transactions}/>
-        </View>
+        <AccountsList accounts={accounts}/>
       </View>
     </ScreenContentWrapper>
   )
 }
 
 const styles = StyleSheet.create({
-  safeContainer: {
-    flexGrow: 1,
-    paddingTop: 30,
-    backgroundColor: 'beige'
-  },
   mainContainer: {
-    backgroundColor: 'beige',
+
     flex: 1
   },
   titleText: {

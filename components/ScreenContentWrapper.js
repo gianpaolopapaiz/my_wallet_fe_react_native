@@ -1,10 +1,14 @@
 import React from 'react'
 import { View, StyleSheet } from "react-native";
+import PageTitle from "./PageTitle";
 
-const ScreenContentWrapper = ({children}) => {
+const ScreenContentWrapper = ({pageTitle, children}) => {
   return (
     <View style={styles.safeArea}>
-      {children}
+      <PageTitle text={pageTitle}/>
+      <View style={styles.mainContainer}>
+        {children}
+      </View>
     </View>
   );
 };
@@ -14,6 +18,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingTop: 30,
     backgroundColor: 'green'
+  },
+  mainContainer: {
+    backgroundColor: 'beige',
+    flex: 1,
   }
 });
 

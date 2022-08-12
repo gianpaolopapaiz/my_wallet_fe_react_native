@@ -6,7 +6,6 @@ import {
   StyleSheet
 } from 'react-native';
 import ScreenContentWrapper from "../components/ScreenContentWrapper";
-import PageTitle from "../components/PageTitle";
 
 const Categories = () => {
   const categories = [
@@ -31,41 +30,19 @@ const Categories = () => {
   ]
 
   return (
-    <ScreenContentWrapper>
-      <PageTitle text='Categories'/>
-      <View style={styles.mainContainer}>
-        <View>
-          <FlatList
-            data={categories}
-            keyExtractor={item => item.id}
-            renderItem={data => <Text>{data.item.title}: {data.item.description}</Text>}
-          />
-        </View>
+    <ScreenContentWrapper pageTitle='Categories'>
+      <View>
+        <FlatList
+          data={categories}
+          keyExtractor={item => item.id}
+          renderItem={data => <Text>{data.item.title}: {data.item.description}</Text>}
+        />
       </View>
     </ScreenContentWrapper>
   )
 }
 
 const styles = StyleSheet.create({
-  safeContainer: {
-    flexGrow: 1,
-    paddingTop: 30,
-    backgroundColor: 'beige'
-  },
-  mainContainer: {
-    backgroundColor: 'beige',
-    flex: 1
-  },
-  titleText: {
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontFamily: 'Roboto'
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1
-  }
 });
 
 export default Categories

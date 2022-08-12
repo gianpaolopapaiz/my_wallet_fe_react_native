@@ -5,14 +5,12 @@ import PageTitle from "../components/PageTitle";
 
 const Statistics = () => {
   return (
-    <ScreenContentWrapper>
-      <PageTitle text='Statistics'/>
+    <ScreenContentWrapper pageTitle='Statistics'>
     </ScreenContentWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-
 });
 
 export default Statistics;
