@@ -3,6 +3,8 @@ import {
   View,
   StyleSheet
 } from 'react-native';
+import ScreenContentWrapper from "../components/ScreenContentWrapper";
+import PageTitle from "../components/PageTitle";
 import TransactionsList from "../components/TransactionsList";
 
 const Home = () => {
@@ -41,13 +43,14 @@ const Home = () => {
   ]
 
   return (
-    <View style={styles.safeContainer}>
+    <ScreenContentWrapper>
+      <PageTitle text="Accounts"/>
       <View style={styles.mainContainer}>
         <View>
           <TransactionsList transactions={transactions}/>
         </View>
       </View>
-    </View>
+    </ScreenContentWrapper>
   )
 }
 

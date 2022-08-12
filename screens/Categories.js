@@ -5,7 +5,8 @@ import {
   FlatList,
   StyleSheet
 } from 'react-native';
-import TransactionsList from "../components/TransactionsList";
+import ScreenContentWrapper from "../components/ScreenContentWrapper";
+import PageTitle from "../components/PageTitle";
 
 const Categories = () => {
   const categories = [
@@ -30,7 +31,8 @@ const Categories = () => {
   ]
 
   return (
-    <View style={styles.safeContainer}>
+    <ScreenContentWrapper>
+      <PageTitle text='Categories'/>
       <View style={styles.mainContainer}>
         <View>
           <FlatList
@@ -40,7 +42,7 @@ const Categories = () => {
           />
         </View>
       </View>
-    </View>
+    </ScreenContentWrapper>
   )
 }
 
