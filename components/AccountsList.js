@@ -1,7 +1,6 @@
 import {
   StyleSheet,
   View,
-  Text,
   FlatList
 } from 'react-native'
 import AccountCard from './AccountCard'
