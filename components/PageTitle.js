@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import WText from "./WText";
+import globalStyles from "../styles";
+import constants from "./constants";
 
 const PageTitle = (props) => {
   const text = props.text
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>{text}</Text>
+      <WText
+        type='h1'
+        aStyle={styles.pageTitle}>
+        {text}
+      </WText>
     </View>
   );
 }
@@ -16,10 +23,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   pageTitle: {
-    fontWeight: "bold",
-    fontSize: 24,
-    fontFamily: 'Roboto',
-    color: 'beige'
+    color: constants.bgColor,
   }
 })
 

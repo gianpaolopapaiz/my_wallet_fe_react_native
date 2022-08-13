@@ -33,28 +33,12 @@ const Home = () => {
 
   return (
     <ScreenContentWrapper pageTitle='Accounts'>
-      <View style={styles.mainContainer}>
-        <AccountsList accounts={accounts}/>
-      </View>
+      <AccountsList accounts={accounts}/>
     </ScreenContentWrapper>
   )
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-
-    flex: 1
-  },
-  titleText: {
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontFamily: 'Roboto'
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1
-  }
 });
 
 export default Home
