@@ -11,6 +11,21 @@ const WText = ({type = 'p', aStyle, children}) => {
       case 'h1':
         return globalStyles.textH1
         break;
+      case 'h2':
+        return globalStyles.textH2
+        break;
+      case 'h3':
+        return globalStyles.textH3
+        break;
+      case 'h4':
+        return globalStyles.textH4
+        break;
+      case 'h5':
+        return globalStyles.textH5
+        break;
+      case 'h6':
+        return globalStyles.textH6
+        break;
       default:
         return globalStyles.textP
         break;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from "react-native";
 import WText from "./WText";
-import globalStyles from "../styles";
 import constants from "./constants";
 
 const PageTitle = (props) => {

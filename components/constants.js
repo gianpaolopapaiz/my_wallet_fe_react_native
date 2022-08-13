@@ -9,7 +9,8 @@ const constants = {
   textH3Size: 20,
   textH4Size: 18,
   textH5Size: 16,
-  textPSize: 12
+  textH6Size: 14,
+  textPSize: 14
 }
 
 export default constants;
