@@ -1,15 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
 import globalStyles from "../styles";
 
-const ShadowedBox = ({children}) => {
+const ShadowedBox = ({route, children}) => {
   return (
-    <View style={[
+    <TouchableOpacity onPress={route} style={[
       globalStyles.boxShadow,
       globalStyles.cardWrapper
     ]}>
       {children}
-    </View>
+    </TouchableOpacity>
   )
 }
 

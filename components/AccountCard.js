@@ -1,7 +1,8 @@
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Button
 } from 'react-native'
 import WText from "./WText";
 import ShadowedBox from "./ShadowedBox";
@@ -9,14 +10,20 @@ import globalStyles from "../styles";
 
 const AccountCard = (props) => {
   const {
+    id,
     name,
     description,
     nice_initial_amount,
     nice_current_amount
   } = props.account;
+  const navigation = props.navigation;
+
+  const navigateToTransactions = () => {
+    navigation.push('Transactions', { accountId: id})
+  }
 
   return (
-    <ShadowedBox>
+    <ShadowedBox route={navigateToTransactions}>
       <View style={styles.flexRow}>
         <View>
           <WText type="h4">{name}</WText>

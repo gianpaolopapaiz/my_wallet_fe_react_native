@@ -6,13 +6,13 @@ import {
 import AccountCard from './AccountCard'
 
 const AccountsList = (props) => {
-  const { accounts } = props;
+  const { accounts, navigation } = props;
   return (
     <View style={styles.container}>
       <FlatList
         data={accounts}
         keyExtractor={item => item.id}
-        renderItem={data => <AccountCard account={data.item}/>}
+        renderItem={data => <AccountCard navigation={navigation} account={data.item}/>}
       />
     </View>
   )
