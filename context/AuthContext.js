@@ -8,40 +8,53 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [userToken, setUserToken] = useState(null)
+  const [userInfo, setUserInfo] = useState(null)
 
   const login = (email, password) => {
     setIsLoading(true)
     console.log(`${BASE_URL}/users/sign_in`)
     axios.post(`${BASE_URL}/users/sign_in`, {
-      email: email,
-      password: password
+      user: {
+        email: email,
+        password: password
+      },
     })
     .then( res => {
-      console.log(res.data)
+      console.log(res.headers.authorization.split(' ')[1])
+      let userToken = res.headers.authorization.split(' ')[1];
+      let userInfo = res.data.user;
+      setUserInfo(userInfo);
+      setUserToken(userToken);
+      AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+      AsyncStorage.setItem('userToken', userToken);
     })
     .catch(e => {
       console.log(`Login error ${e}`);
     })
-    // setUserToken('sadsdadsadasd');
-    // AsyncStorage.setItem('userToken', 'sadsdadsadasd')
     setIsLoading(false);
   }
 
   const logout = () => {
-    setIsLoading(true)
-    setUserToken(null)
-    AsyncStorage.removeItem('userToken')
-    setIsLoading(false)
+    setIsLoading(true);
+    setUserToken(null);
+    AsyncStorage.removeItem('userInfo');
+    AsyncStorage.removeItem('userToken');
+    setIsLoading(false);
   }
 
   const isLoggedIn = async () => {
     try {
       setIsLoading(true);
+      let userInfo = await AsyncStorage.getItem('userInfo');
       let userToken = await AsyncStorage.getItem('userToken');
-      setUserToken(userToken)
-      setIsLoading(false)
+      userInfo = JSON.parse(userInfo);
+      if (userInfo) {
+        setUserInfo(userInfo);
+        setUserToken(userToken);
+      }
+      setIsLoading(false);
     } catch (e) {
-     console.log(`isLogged in error ${e}`)
+     console.log(`isLogged in error ${e}`);
     }
   }
 
@@ -50,7 +63,7 @@ export const AuthProvider = ({children}) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{login, logout, isLoading, userToken}}>
+    <AuthContext.Provider value={{login, logout, isLoading, userToken, userInfo}}>
       {children}
     </AuthContext.Provider>
   )

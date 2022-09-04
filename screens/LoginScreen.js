@@ -13,7 +13,7 @@ const LoginScreen = () => {
         This is the Login Screen
       </WText>
       <Button title={'login'}
-              onPress={() => {login('gipppppa@hotmail.com', 'P@ssw0rd')}}
+              onPress={() => {login('gipppppa20@hotmail.com', 'P@ssw0rd')}}
       >
         Login
       </Button>

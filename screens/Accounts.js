@@ -1,10 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {useState, useCallback, useEffect, useContext} from 'react';
 import { StyleSheet, Text } from 'react-native';
 import ScreenContentWrapper from "../components/ScreenContentWrapper";
 import AccountsList from "../components/AccountsList";
+import { AuthContext } from "../context/AuthContext";
 
 const Accounts = ({navigation}) => {
   const [accounts, setAccounts] = useState([])
+  const {userInfo} = useContext(AuthContext);
 
   const handleFetchAccounts = useCallback(async () => {
     const result = await fetch('https://wallets-rails-api.herokuapp.com/api/v1/accounts');
@@ -72,6 +74,7 @@ const Accounts = ({navigation}) => {
   } else {
     return (
       <ScreenContentWrapper pageTitle='Accounts'>
+        <Text>{userInfo.name}</Text>
         <Text>There is no account yet.</Text>
       </ScreenContentWrapper>
     )
