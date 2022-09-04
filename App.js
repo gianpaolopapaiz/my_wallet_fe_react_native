@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import Tabs from './components/Tabs'
+import { AuthProvider } from "./context/AuthContext";
+import AppNav from "./screens/AppNav";
 
 const App = () => {
 
   return (
-    <NavigationContainer>
-      <Tabs/>
-    </NavigationContainer>
+    <AuthProvider>
+      <AppNav/>
+    </AuthProvider>
   );
 };
 

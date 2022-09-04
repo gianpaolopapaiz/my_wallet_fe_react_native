@@ -1,25 +1,46 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import ScreenContentWrapper from "../components/ScreenContentWrapper";
 import AccountsList from "../components/AccountsList";
 
 const Accounts = ({navigation}) => {
   const [accounts, setAccounts] = useState([])
 
-  const fetchAccounts = useCallback(async () => {
-    const result = await fetch('http://localhost:3000/api/v1/accounts');
+  const handleFetchAccounts = useCallback(async () => {
+    const result = await fetch('https://wallets-rails-api.herokuapp.com/api/v1/accounts');
     const accountsJson = await result.json();
+    console.log(result)
     if (result.ok) {
       setAccounts(accountsJson);
     }
   });
 
-  fetch('localhost:3000/api/v1/accounts')
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+  // const fetchAccounts = useCallback(async () => {
+  //   const result = await fetch('https://wallets-rails-api.herokuapp.com/api/v1/accounts');
+  //   const accountsJson = await result.json();
+  //   console.log(result)
+  //   if (result.ok) {
+  //     setAccounts(accountsJson);
+  //   }
+  // });
+
+  const getAccounts = () => {
+    return fetch('https://wallets-rails-api.herokuapp.com/api/v1/accounts')
+      .then((response) => {
+        console.log(response)
+        response.json()
+        if (response.status === 200) {
+          console.log('foi')
+        } else {
+          console.log('erro')
+        }
+      })
+  };
 
   useEffect(() => {
-    fetchAccounts();
+    console.log('fetching accounts')
+    // handleFetchAccounts();
+    // getAccounts()
   }, [])
 
   // const fakeAccounts = [
@@ -42,12 +63,19 @@ const Accounts = ({navigation}) => {
   //     nice_current_amount: '$400,00'
   //   }
   // ]
-
-  return (
-    <ScreenContentWrapper pageTitle='Accounts'>
-      <AccountsList navigation={navigation} accounts={accounts}/>
-    </ScreenContentWrapper>
-  )
+  if (accounts.length > 0) {
+    return (
+      <ScreenContentWrapper pageTitle='Accounts'>
+        <AccountsList navigation={navigation} accounts={accounts}/>
+      </ScreenContentWrapper>
+    )
+  } else {
+    return (
+      <ScreenContentWrapper pageTitle='Accounts'>
+        <Text>There is no account yet.</Text>
+      </ScreenContentWrapper>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
