@@ -12,7 +12,6 @@ export const AuthProvider = ({children}) => {
 
   const login = (email, password) => {
     setIsLoading(true)
-    console.log(`${BASE_URL}/users/sign_in`)
     axios.post(`${BASE_URL}/users/sign_in`, {
       user: {
         email: email,
@@ -37,6 +36,7 @@ export const AuthProvider = ({children}) => {
   const logout = () => {
     setIsLoading(true);
     setUserToken(null);
+    setUserInfo(null);
     AsyncStorage.removeItem('userInfo');
     AsyncStorage.removeItem('userToken');
     setIsLoading(false);
