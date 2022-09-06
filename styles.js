@@ -8,6 +8,11 @@ const globalStyles = StyleSheet.create({
     margin: 10,
     backgroundColor: 'white'
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   boxShadow: {
     elevation: 10,
     shadowColor: '#52006A',
@@ -45,6 +50,31 @@ const globalStyles = StyleSheet.create({
   textP: {
     fontFamily: constants.fontFamily,
     fontSize: constants.textPSize,
+  },
+  btnPrimary: {
+    backgroundColor: constants.primaryColor,
+    borderRadius: 12,
+    marginVertical: 5,
+    paddingVertical: 10
+  },
+  btnSecondary: {
+    backgroundColor: 'white',
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: constants.primaryColor,
+    borderRadius: 12,
+    marginVertical: 5,
+    paddingVertical: 8
+  },
+  btnTextSecondary: {
+    color: constants.primaryColor,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  btnTextPrimary: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   }
 });
 
