@@ -1,12 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Modal, Button, StyleSheet, View, TextInput, Pressable} from "react-native";
 import WText from "./WText";
-import constants from "./constants";
 import globalStyles from "../styles";
+import axios from "axios";
+import {BASE_URL} from "../config";
 
 const createAccountModal = (props) => {
   const visible = props.visible;
   const setVisible = props.setVisible;
+  const getAccounts = props.getAccounts;
+  const [name, setName] = useState(null)
+  const [description, setDescription] = useState(null)
+  const [initialAmount, setInitialAmount] = useState(0)
+
+  const createAccount = (name, description, initialAmount) => {
+    axios.post(`${BASE_URL}/api/v1/accounts`, {
+      account: {
+        name: name,
+        description: description,
+        initial_amount: initialAmount
+      },
+    })
+    .then( res => {
+      setVisible(false);
+      getAccounts();
+    })
+    .catch(e => {
+      console.log(`Create Account error ${e}`);
+    })
+  }
 
   return(
     <Modal
@@ -24,21 +46,27 @@ const createAccountModal = (props) => {
           <TextInput
             style={styles.input}
             placeholder='Name'
+            value={name}
+            onChangeText={setName}
           />
           <TextInput
             style={styles.input}
             placeholder='Description'
             multiline={true}
+            value={description}
+            onChangeText={setDescription}
           />
           <TextInput
             style={styles.input}
             keyboardType='numeric'
             placeholder='Initial Amount'
+            value={initialAmount}
+            onChangeText={setInitialAmount}
           />
           <View style={styles.buttonsContainer}>
             <Pressable
               style={globalStyles.btnPrimary}
-              onPress={()=>{}}
+              onPress={()=>{createAccount(name, description, initialAmount)}}
             >
               <WText aStyle={globalStyles.btnTextPrimary}>CREATE</WText>
             </Pressable>

@@ -36,6 +36,7 @@ const Accounts = ({navigation}) => {
       <CreateAccountModal
         visible={createAccountModalVisible}
         setVisible={setCreateAccountModalVisible}
+        getAccounts={getAccounts}
       />
       {loading && <ActivityIndicator size='large'/>}
       {!loading && accounts.length > 0 ?
