@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Modal, Button, StyleSheet, View, TextInput, Pressable} from "react-native";
+import {Modal, StyleSheet, View, TextInput, Pressable, ActivityIndicator} from "react-native";
 import WText from "./WText";
 import globalStyles from "../styles";
 import axios from "axios";
@@ -12,8 +12,10 @@ const createAccountModal = (props) => {
   const [name, setName] = useState(null)
   const [description, setDescription] = useState(null)
   const [initialAmount, setInitialAmount] = useState(0)
+  const [isFetchingAccount, setIsFetchingAccount] = useState(false)
 
   const createAccount = (name, description, initialAmount) => {
+    setIsFetchingAccount(true)
     axios.post(`${BASE_URL}/api/v1/accounts`, {
       account: {
         name: name,
@@ -28,6 +30,9 @@ const createAccountModal = (props) => {
     .catch(e => {
       console.log(`Create Account error ${e}`);
     })
+    setTimeout(()=>{
+      setIsFetchingAccount(false)
+    }, 2000)
   }
 
   return(
@@ -40,6 +45,11 @@ const createAccountModal = (props) => {
       }}
     >
       <View style={styles.modalWrapper}>
+        {isFetchingAccount &&
+          <View style={styles.activityForModal}>
+            <ActivityIndicator size='large'/>
+          </View>
+        }
         <View style={styles.modalContainer}>
           <WText type="h3">Add Account</WText>
           <WText>Create a new account for your profile.</WText>
@@ -110,6 +120,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     elevation: 20,
     shadowColor: 'black'
+  },
+  activityForModal: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent:"center"
   }
 });
 
