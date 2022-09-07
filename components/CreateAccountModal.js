@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: 'white',
     elevation: 20,
-    shadowColor: '#52006A'
+    shadowColor: 'black'
   }
 });
 

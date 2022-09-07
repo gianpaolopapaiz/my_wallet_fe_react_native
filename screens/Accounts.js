@@ -1,12 +1,13 @@
 import React, {useState, useCallback, useEffect, useContext} from 'react';
 import axios from 'axios';
 import {BASE_URL} from "../config";
-import {ActivityIndicator, Button, Modal, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, Button, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import ScreenContentWrapper from "../components/ScreenContentWrapper";
 import AccountsList from "../components/AccountsList";
 import { AuthContext } from "../context/AuthContext";
-import globalStyles from "../styles";
 import CreateAccountModal from "../components/CreateAccountModal";
+import constants from "../components/constants";
+import WText from "../components/WText";
 
 const Accounts = ({navigation}) => {
   const [accounts, setAccounts] = useState([])
@@ -44,17 +45,35 @@ const Accounts = ({navigation}) => {
         :
         <Text>There is no account yet.</Text>
       }
-      <Button
-        title='createAccountModalOpen'
+      <Pressable
+        style={styles.roundPlusButton}
         onPress={() => setCreateAccountModalVisible(true)}
       >
-        Create Account
-      </Button>
+        <WText
+          type='h3'
+          aStyle={styles.colorPrimary}>+</WText>
+      </Pressable>
     </ScreenContentWrapper>
   )
 }
 
 const styles = StyleSheet.create({
+  roundPlusButton: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    backgroundColor: constants.primaryColor,
+    alignItems: 'center',
+    justifyContent: "center",
+    elevation: 10,
+    shadowColor: 'black'
+  },
+  colorPrimary: {
+    color: constants.bgColor
+  }
 });
 
 export default Accounts
